@@ -670,7 +670,7 @@ https://IP_Address/v1/embeddings
 
 1. Выберите нужный вам чат из списка чатов в левой панели экрана. 
 
-   <img src="images_user_guide/chat_with_model.png" width=450 height=270>
+   <img src="images_user_guide/chat-model.png" width=450 height=270>
 
 2. Введите промпт в строке и нажмите **ENTER** на клавиатуре или кнопку **"Отправить"**.
 3. Ждите ответа модели. <br> Используйте кнопку **"Быстрая команда"**  или **"/"** в строке для выбора промптов из списка.
@@ -1123,7 +1123,8 @@ Code 401 - Пользователь указал некорректный ток
     ```
    {
       "object": "error",
-      "message": "[{'type': 'missing', 'loc': ('body', 'prompt'), 'msg': 'Field required', 'input': {'model': 'model_name}}]",
+      "message": "[{
+        'type': 'missing', 'loc': ('body', 'prompt'), 'msg': 'Field required', 'input': {'model': 'model_name}}]",
       "type": "BadRequestError",
       "param": null,
       "code": 400
