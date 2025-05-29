@@ -852,7 +852,7 @@ Code 401 - Пользователь указал некорректный ток
      "type": "BadRequestError",
      "param": null,
      "code": 400
-    }
+   }
    ```
 
 ## 2.4 Атрибут: top_p, опциональный
@@ -1008,13 +1008,13 @@ Code 401 - Пользователь указал некорректный ток
 **Пример ответа 400**:
 
 ```
-{
+ {
     "object": "error",
     "message": "[{'type': 'bool_type', 'loc': ('body', 'stream'), 'msg': 'Input should be a valid boolean', 'input': 1.5}]",
     "type": "BadRequestError",
     "param": null,
     "code": 400
-}
+ }
 ```
 
 ## 2.8 Атрибут: frequency_penalty,  опциональный
