@@ -695,29 +695,29 @@ https://IP_Address/v1/embeddings
 2. Введите промпт в строке и нажмите **ENTER** на клавиатуре или кнопку **"Отправить"**.
 3. Ждите ответа модели. <br> Используйте кнопку **"Быстрая команда"**  или **"/"** в строке для выбора промптов из списка.
  
-   <img src="images_user_guide/quick-command.png" width=260 height=310>
+   <img src="images_user_guide/quick-command.png" >
 
    После того как выбранный промпт подставится в строку редактора, нажмите **"Отправить"**.
 
-   <img src="images_user_guide/send-prompt.png" width=260 height=310>
+   <img src="images_user_guide/send-prompt.png" >
 
    Для вызова команд для работы с чатом, введите символ **":"** и выберите нужную команду из списка. 
 
-    <img src="images_user_guide/chat-choose-command.png" width=270 height=320>
+    <img src="images_user_guide/chat-choose-command.png" >
 
 
     Для удаление чата, вы также можете использовать кнопку **"Очистить чат"** на панели чата.
 
     Если вам нужно изменить сообщение, нажмите кнопку  **"Редактировать"**. После внесения изменений в сообщения, нажмите **"Подтвердить"**.
 
-    <img src="images_user_guide/change-message.png" width=390 height=242>
+    <img src="images_user_guide/change-message.png" >
 
 ## 4.4 Изменение настроек чата
 
 Вы можете изменить настройки конкретного чата. <br>
 Для открытия настроек выбранного чата, нажмите кнопку **"Настройки чата"** в панели над окном ввода.
 
-  <img src="images_user_guide/chat-settings-button.png" width=270 height=315>
+  <img src="images_user_guide/chat-settings-button.png" >
 
 В окне "Текущие настройки чата" вы можете:
 - изменить промпт;
@@ -759,7 +759,7 @@ https://IP_Address/v1/embeddings
 - размер шрифта и шрифт чата;
 - настройки модели.
 
-  <img src="images_user_guide/common-settings.png" width=430 height=300>
+  <img src="images_user_guide/common-settings.png" >
 
 ## 4.6 Удаление чата
 
