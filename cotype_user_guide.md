@@ -85,8 +85,8 @@ Cotype — это большая языковая модель для генер
 |max_tokens| integer | Натуральное число, больше 0. |Максимальное количество токенов, которые могут быть сгенерированы в ответ на запрос пользователя. Это позволяет регулировать длину ответа. |
 |n| integer | Натуральное число больше 0. По умолчанию: 1.  |Количество ответов, которые модель сгенерирует. |
 |stream| boolean | True/False. По умолчанию: false. |Если установить значение true, ответ модели будет возвращаться не целиком сразу, а итеративно, по мере его формирования моделью. |
-|stream_options| object or null  |  <code> "stream": true,<br>&nbsp;&nbsp;"stream_options":{"include_usage": true} </code> |Параметры для потокового ответа. Устанавливайте только при установке `stream: true`.  |
-|&nbsp;&nbsp; include_usage| boolean  | <code> "usage": {<br>&nbsp;&nbsp; "prompt_tokens": 61,<br>&nbsp;&nbsp; "total_tokens": 446,<br>&nbsp;&nbsp; "completion_tokens": 385<br> } </code> |Если установлен в true,  то будет добавлен новый информационный фрагмент перед последним фрагментом `[DONE]`. Поле `usage` в этом фрагменте показывает статистику использования токенов для всего запроса, а поле `choices` всегда будет пустым массивом. |
+|stream_options| object or null  |  <image src="images_user_guide/stream-options-example.png"> |Параметры для потокового ответа. Устанавливайте только при установке `stream: true`.  |
+|&nbsp;&nbsp; include_usage| boolean  | <image src="images_user_guide/usage-example.png"> |Если установлен в true,  то будет добавлен новый информационный фрагмент перед последним фрагментом `[DONE]`. Поле `usage` в этом фрагменте показывает статистику использования токенов для всего запроса, а поле `choices` всегда будет пустым массивом. |
 |frequency_penalty| integer | Натуральное число от -2 до 2. |Штраф за частоту — число между -2.0 и 2.0. Положительные значения штрафуют новые токены, на основе их текущей частоты в тексте, снижая вероятность того, что модель повторит одну и ту же строку. |
 |presence_penalty| integer | Натуральное число от -2 до 2. |Положительные значения накладывают штраф на новые токены в зависимости от того, появляются ли они в тексте до сих пор, увеличивая вероятность того, что модель будет говорить о новых темах. |
 |logit_bias | map | По умолчанию: null |Позволяет изменять  вероятность появления указанных токенов в генерации. Принимает объект JSON, который сопоставляет токены (указанные по их идентификатору токена в токенизаторе) со связанным значением отклонения от -100 до 100. `logit_bias` позволяет запретить модели использовать некоторые ID токенов. Чем ближе значение параметра к -100, тем больше вероятность, что токен будет заблокирован моделью.  Чем ближе значение параметра к + 100, тем больше вероятность что токен будет использован моделью. |
@@ -113,34 +113,32 @@ Cotype — это большая языковая модель для генер
 
   ```
   {
-    "model": "//ID вашей модели",
-    "messages": [
-      {
-        "role": "system",
-        "content": "Отвечай как экскурсовод"
-      },
-      {
+     "model": "//ID вашей модели",
+     "messages": [
+     {
+       "role": "system",
+       "content": "Отвечай как экскурсовод"
+     },
+     {
         "role": "user",
         "content": "Расскажи мне о Москве в 1 предложении."
-      }
-    ]
+     }]
   }
   ```
   Пример заполнения представлен ниже.
 
   ```
   {
-    "model": "cotype_pro_16k_1.1",
-    "messages": [
-      {
+     "model": "cotype_pro_16k_1.1",
+     "messages": [
+     {
         "role": "system",
         "content": "Отвечай как экскурсовод"
-      },
-      {
-        "role": "user",
-        "content": "Расскажи мне о Москве в 1 предложении."
-      }
-    ]
+     },
+     {
+       "role": "user",
+       "content": "Расскажи мне о Москве в 1 предложении."
+     } ]
   }
   ```
 
@@ -151,18 +149,17 @@ Cotype — это большая языковая модель для генер
    -H "Content-Type: application/json" \
    -H "Authorization: Bearer Token" \
    -d '{
-      "model": "cotype_pro_16k_1.1",
-      "messages": [
-        {
-          "role": "system",
-          "content": "Отвечай как экскурсовод"
-        },
-        {
-          "role": "user",
-          "content": " Расскажи мне о Москве в 1 предложении."
-        }
-      ]
-    }'
+          "model": "cotype_pro_16k_1.1",
+          "messages": [
+          {
+             "role": "system",
+             "content": "Отвечай как экскурсовод"
+          },
+          {
+             "role": "user",
+             "content": " Расскажи мне о Москве в 1 предложении."
+          }]
+      }'
    ```
 
 ### 3.1.2 Результат выполнения запроса POST/v1/chat/completions
@@ -171,29 +168,30 @@ Cotype — это большая языковая модель для генер
 
 ```
 {
-    "id": "cmpl-e263c7d6179a43e98b2ca9580b57e4f6",
-    "object": "chat.completion",
-    "created": 1724069159,
-    "model": "cotype_pro_16k_1.1",
-    "choices": [
-        {
-            "index": 0,
-            "message": {
-            	"role": "assistant",
-            	"content": "Москва, столица России, - это тысячелетний город с богатой историей и архитектурой, где древнерусские храмы и кремли, таких как Красная площадь и Московский Кремль, соседствуют с современными небоскребами и шумными улицами, создавая уникальный контраст между прошлым и настоящим."
-               "tool_calls": []
-            },
-            "logprobs": null,
-            "finish_reason": "stop",
-            "stop_reason": null
-        }
-    ],
-    "usage": {
-        "prompt_tokens": 89,
-        "total_tokens": 193,
-        "completion_tokens": 104
-	},
-    "prompt_logprobs": null
+   "id": "cmpl-e263c7d6179a43e98b2ca9580b57e4f6",
+   "object": "chat.completion",
+   "created": 1724069159,
+   "model": "cotype_pro_16k_1.1",
+   "choices": [
+   {
+      "index": 0,
+      "message":
+      {
+         "role": "assistant",
+         "content": "Москва, столица России, - это тысячелетний город с богатой историей и архитектурой, где древнерусские храмы и кремли, таких как Красная площадь и Московский Кремль, соседствуют с современными небоскребами и шумными улицами, создавая уникальный контраст между прошлым и настоящим."
+         "tool_calls": []
+      },
+      "logprobs": null,
+      "finish_reason": "stop",
+      "stop_reason": null
+   }],
+   "usage":
+   {
+      "prompt_tokens": 89,
+      "total_tokens": 193,
+      "completion_tokens": 104
+	 },
+   "prompt_logprobs": null
 }
 ```
 
@@ -226,13 +224,24 @@ Cotype — это большая языковая модель для генер
 
 ```
 {
-  "model": "//имя вашей модели",
-  "messages": [
-    {"role": "system","content": "Отвечай как экскурсовод"},
-    {"role": "user", "content": "Расскажи мне о Москве в 1 предложении."},
-    {"role": "assistant", "content": "Москва - это столица России, древний и современный город, объединяющий богатую историю и культуру, архитектурные шедевры, таких как Кремль и храм Василия Блаженного, с динамичной городской жизнью, современными технологиями и инфраструктурой, а также уникальной атмосферой, которая сочетает в себе традиции и инновации." },
-    {"role": "user", "content": "Расскажи мне более подробно о Кремле."} 
-  ]
+   "model": "//имя вашей модели",
+   "messages": [
+   {
+       "role": "system",
+       "content": "Отвечай как экскурсовод"
+   },
+   {
+      "role": "user",
+      "content": "Расскажи мне о Москве в 1 предложении."
+   },
+   {
+      "role": "assistant",
+      "content": "Москва - это столица России, древний и современный город, объединяющий богатую историю и культуру, архитектурные шедевры, таких как Кремль и храм Василия Блаженного, с динамичной городской жизнью, современными технологиями и инфраструктурой, а также уникальной атмосферой, которая сочетает в себе традиции и инновации."
+   },
+   {
+      "role": "user",
+      "content": "Расскажи мне более подробно о Кремле."
+   }]
 }
 ```
 
@@ -252,15 +261,15 @@ tool_functions = {"get_weather": get_weather}
 tools = [{
     "type": "function",
     "function": {
-        "name": "get_weather",
-        "description": "Определить текущую погоду в городе",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "location": {"type": "string", "description": "Город или поселок, например, 'Москва'"},
-                "unit": {"type": "string", "enum": ["цельсии", "фаренгейты"]}
-            },
-            "required": ["location", "unit"]
+       "name": "get_weather",
+       "description": "Определить текущую погоду в городе",
+       "parameters": {
+          "type": "object",
+          "properties": {
+             "location": {"type": "string", "description": "Город или поселок, например, 'Москва'"},
+             "unit": {"type": "string", "enum": ["цельсии", "фаренгейты"]}
+          },
+           "required": ["location", "unit"]
         }
     }
 }]
@@ -302,25 +311,40 @@ else:
 
 ```
 {
- 'id': 'chatcmpl-080f745514ee4e27bffca4e567ba3c4a',
- 'object': 'chat.completion',
- 'created': 1741944362,
- 'model': 'cotype',
- 'choices': [{'index': 0,
-   'message': {'role': 'assistant',
-    'content': None,
-    'tool_calls': [{'id': 'chatcmpl-tool-8e49f569510b4cf6afd5524aee967647',
-      'type': 'function',
-      'function': {'name': 'get_weather',
-       'arguments': '{"location": "Санкт-Петербург", "unit": "цельсии"}'}}]},
-   'logprobs': None,
-   'finish_reason': 'tool_calls',
-   'stop_reason': None}],
- 'usage': {'prompt_tokens': 261,
-  'total_tokens': 294,
-  'completion_tokens': 33,
-  'prompt_tokens_details': None},
- 'prompt_logprobs': None
+   'id': 'chatcmpl-080f745514ee4e27bffca4e567ba3c4a',
+   'object': 'chat.completion',
+   'created': 1741944362,
+   'model': 'cotype',
+   'choices': [
+   {
+      'index': 0,
+      'message': 
+      {
+         'role': 'assistant',
+         'content': None,
+         'tool_calls': [
+         {
+            'id': 'chatcmpl-tool-8e49f569510b4cf6afd5524aee967647',
+            'type': 'function',
+            'function':
+            {
+               'name': 'get_weather',
+               'arguments': '{"location": "Санкт-Петербург", "unit": "цельсии"}'
+            }
+         }]
+      },
+      'logprobs': None,
+      'finish_reason': 'tool_calls',
+      'stop_reason': None
+   }],
+   'usage':
+   {
+      'prompt_tokens': 261,
+      'total_tokens': 294,
+      'completion_tokens': 33,
+      'prompt_tokens_details': None
+   },
+   'prompt_logprobs': None
 }
 ```
 
@@ -350,33 +374,31 @@ else:
 
 ```
 {
-    "object": "list",
-    "data": [
-        {
-            "id": "cotype_pro_16k_1.1",
-            "object": "model",
-            "created": 1724087433,
-            "owned_by": "vLLM",
-            "root": "cotype_pro_16k_1.1",
-            "parent": null,
-            "permission": [
-                {
-                    "id": "modelperm-1b7dd7dea5244bdb888971bf2b89f6ff",
-                    "object": "model_permission",
-                    "created": 1724087433,
-                    "allow_create_engine": false,
-                    "allow_sampling": true,
-                    "allow_logprobs": true,
-                    "allow_search_indices": false,
-                    "allow_view": true,
-                    "allow_fine_tuning": false,
-                    "organization": "*",
-                    "group": null,
-                    "is_blocking": false
-                }
-            ]
-        }
-    ]
+   "object": "list",
+   "data": [
+   {
+      "id": "cotype_pro_16k_1.1",
+      "object": "model",
+      "created": 1724087433,
+      "owned_by": "vLLM",
+      "root": "cotype_pro_16k_1.1",
+      "parent": null,
+      "permission": [
+      {
+         "id": "modelperm-1b7dd7dea5244bdb888971bf2b89f6ff",
+         "object": "model_permission",
+         "created": 1724087433,
+         "allow_create_engine": false,
+         "allow_sampling": true,
+         "allow_logprobs": true,
+         "allow_search_indices": false,
+         "allow_view": true,
+         "allow_fine_tuning": false,
+         "organization": "*",
+         "group": null,
+         "is_blocking": false
+      } ]
+   }]
 }
 ```
 
@@ -434,7 +456,7 @@ https://{IP-адрес}/v1/completions
 |max_tokens| integer |Натуральное число, больше 0. По умолчанию: 16. | Максимальное количество токенов, которые могут быть сгенерированы в ответ на запрос пользователя. Это позволяет регулировать длину ответа. |
 |n| integer or null |Натуральное число больше 0. По умолчанию: 1. | Количество ответов, которые модель сгенерирует. |
 |stream| boolean or null |True/False. По умолчанию: false. | Если установить значение **true**, ответ модели будет возвращаться не целиком сразу, а итеративно, по мере его формирования моделью. |
-|stream_options | object or null  |<code>"stream": true,<br> "stream_options":{"include_usage": true} </code>  |Параметры для потокового ответа. Устанавливайте только при установке `stream: true`. |
+|stream_options | object or null  |<image src="images_user_guide/stream-true-example.png">  |Параметры для потокового ответа. Устанавливайте только при установке `stream: true`. |
 |&nbsp;&nbsp;include_usage | boolean | |Если установлено, дополнительный фрагмент будет передан перед сообщением data: `[DONE]`. Поле `usage` в этом фрагменте показывает статистику использования токена для всего запроса, а поле `choices` всегда будет пустым массивом. Все остальные фрагменты также будут включать поле `usage`, но с "null" значением. |
 |frequency_penalty | integer |Натуральное число от -2 до 2. |Штраф за частоту — число между -2.0 и 2.0. Положительные значения штрафуют новые токены, на основе их текущей частоты в тексте, снижая вероятность того, что модель повторит одну и ту же строку. |
 |presence_penalty | integer |Натуральное число от -2 до 2. По умолчанию: 0. |Положительные значения накладывают штраф на новые токены в зависимости от того, появляются ли они в тексте до сих пор, увеличивая вероятность того, что модель будет говорить о новых темах. |
@@ -472,25 +494,24 @@ https://{IP-адрес}/v1/completions
 
 ```
 {
-    "id": "cmpl-b1e39b7c457f46e2af97b47e921cf64c",
-    "object": "text_completion",
-    "created": 1740518640,
-    "model": "cotype_pro_16k_1.1",
-    "choices": [
-        {
-            "index": 0,
-            "text": "! Как дела?\r",
-            "logprobs": null,
-            "finish_reason": "stop",
-            "stop_reason": "\n",
-            "prompt_logprobs": null
-        }
-    ],
-    "usage": {
-        "prompt_tokens": 116,
-        "total_tokens": 121,
-        "completion_tokens": 5
-    }
+   "id": "cmpl-b1e39b7c457f46e2af97b47e921cf64c",
+   "object": "text_completion",
+   "created": 1740518640,
+   "model": "cotype_pro_16k_1.1",
+   "choices": [
+   {
+      "index": 0,
+      "text": "! Как дела?\r",
+      "logprobs": null,
+      "finish_reason": "stop",
+      "stop_reason": "\n",
+      "prompt_logprobs": null
+   }],
+   "usage": {
+      "prompt_tokens": 116,
+      "total_tokens": 121,
+      "completion_tokens": 5
+   }
 }
 ```
 
@@ -543,23 +564,22 @@ https://IP_Address/v1/embeddings
 
 ```
 {
-    "object": "list",
-    "data": [
-        {
-            "object": "embedding",
-            "index": 0,
-            "embedding": [0.8983038067817688,
-                0.09742391109466553,
-                -0.9155033230781555,
-                … 
-             ]
-         }
-     ],
-    "model": "mtsai-chat-embeddings",
-    "usage": {
-        "prompt_tokens": 6,
-        "total_tokens": 6
-    }
+   "object": "list",
+   "data": [
+   {
+      "object": "embedding",
+      "index": 0,
+      "embedding": [0.8983038067817688,
+                    0.09742391109466553,
+                   -0.9155033230781555,
+                   … 
+      ]
+   }],
+   "model": "mtsai-chat-embeddings",
+   "usage": {
+      "prompt_tokens": 6,
+      "total_tokens": 6
+   }
 }
 ```
 
@@ -592,8 +612,8 @@ https://IP_Address/v1/embeddings
 
 ```
 {
-  "access_token": "string",
-  "token_type": "string"
+   "access_token": "string",
+   "token_type": "string"
 }
 ```
 
@@ -770,7 +790,7 @@ Code 401 - Пользователь указал некорректный ток
    **Пример ответа 404**:
 
    ```
-    "The model "model" does not exist."
+   "The model "model" does not exist."
    ```
    Где "model" - тот ID модели, который указал пользователь.
 
@@ -780,11 +800,28 @@ Code 401 - Пользователь указал некорректный ток
 
    ```
    {
-     "object": "error",
-     "message": "[{'type': 'missing', 'loc': ('body', 'model'), 'msg': 'Field required', 'input': {'messages': [{'role': 'system', 'content': 'promt'}, {'role': 'user', 'content': 'promt'}]}}]",
+      "object": "error",
+      "message": "[
+      {
+         'type': 'missing',
+         'loc': ('body', 'model'),
+         'msg': 'Field required',
+         'input':
+         {
+            'messages': "[
+            {
+               'role': 'system', 
+               'content': 'promt'
+            },
+            {
+               'role': 'user',
+               'content': 'promt'
+            }]"
+         },
      "type": "BadRequestError",
      "param": null,
      "code": 400
+     }]"
    }
    ```
 
@@ -805,8 +842,17 @@ Code 401 - Пользователь указал некорректный ток
 
    ```
    {
-     "object": "error",
-     "message": "[{'type': 'missing', 'loc': ('body', 'messages'), 'msg': 'Field required', 'input': {'model': 'cotype_light_4k_2.0'}}]", 
+      "object": "error",
+      "message": "[
+      {
+         'type': 'missing',
+         'loc': ('body', 'messages'),
+         'msg': 'Field required',
+         'input': 
+         {
+            'model': 'cotype_light_4k_2.0'
+         }
+      }]", 
      "type": "BadRequestError",
      "param": null,
      "code": 400
@@ -820,11 +866,17 @@ Code 401 - Пользователь указал некорректный ток
 
    ```
    {
-     "object": "error",
-     "message": "[{'type': 'float_parsing', 'loc': ('body', 'temperature'), 'msg': 'Input should be a valid number, unable to parse string as a number', 'input': 'gh'}]",
-     "type": "BadRequestError",
-     "param": null,
-     "code": 400
+      "object": "error",
+      "message": "[
+      {
+         'type': 'float_parsing',
+         'loc': ('body', 'temperature'),
+         'msg': 'Input should be a valid number, unable to parse string as a number',
+         'input': 'gh'
+      }]",
+      "type": "BadRequestError",
+      "param": null,
+      "code": 400
    }
    ```
 2. Пользователь ввел число, но оно отрицательное.
@@ -833,11 +885,11 @@ Code 401 - Пользователь указал некорректный ток
 
    ```
    {
-    "object": "error",
-    "message": "temperature must be non-negative, got -5.0.",
-    "type": "BadRequestError",
-    "param": null,
-    "code": 400
+      "object": "error",
+      "message": "temperature must be non-negative, got -5.0.",
+      "type": "BadRequestError",
+      "param": null,
+      "code": 400
    }
    ```
 
@@ -847,11 +899,11 @@ Code 401 - Пользователь указал некорректный ток
 
    ```
    {
-     "object": "error",
-     "message": "temperature must be in the range from 0 to 2, got 3.",
-     "type": "BadRequestError",
-     "param": null,
-     "code": 400
+      "object": "error",
+      "message": "temperature must be in the range from 0 to 2, got 3.",
+      "type": "BadRequestError",
+      "param": null,
+      "code": 400
    }
    ```
 
@@ -863,11 +915,17 @@ Code 401 - Пользователь указал некорректный ток
 
     ```
     {
-      "object": "error",
-      "message": "[{'type': 'float_parsing', 'loc': ('body', 'top_p'), 'msg': 'Input should be a valid number, unable to parse string as a number', 'input': 'gh'}]",
-      "type": "BadRequestError",
-      "param": null,
-      "code": 400
+       "object": "error",
+       "message": "[
+       {
+          'type': 'float_parsing',
+          'loc': ('body', 'top_p'),
+          'msg': 'Input should be a valid number, unable to parse string as a number',
+          'input': 'gh'
+       }]",
+       "type": "BadRequestError",
+       "param": null,
+       "code": 400
     }
      ```
 
@@ -876,11 +934,11 @@ Code 401 - Пользователь указал некорректный ток
    **Пример ответа 400**:
    ```
     {
-      "object": "error",
-      "message": "top_p must be in (0, 1], got -1.0.",
-      "type": "BadRequestError",
-      "param": null,
-      "code": 400
+       "object": "error",
+       "message": "top_p must be in (0, 1], got -1.0.",
+       "type": "BadRequestError",
+       "param": null,
+       "code": 400
     }
      ```
 
@@ -892,11 +950,17 @@ Code 401 - Пользователь указал некорректный ток
 
     ```
     {
-      "object": "error",
-      "message": "[{'type': 'int_parsing', 'loc': ('body', 'max_tokens'), 'msg': 'Input should be a valid integer, unable to parse string as an integer', 'input': 'gh'}]",
-      "type": "BadRequestError",
-      "param": null,
-      "code": 400
+       "object": "error",
+       "message": "[
+       {
+          'type': 'int_parsing',
+          'loc': ('body', 'max_tokens'),
+          'msg': 'Input should be a valid integer, unable to parse string as an integer',
+          'input': 'gh'
+       }]",
+       "type": "BadRequestError",
+       "param": null,
+       "code": 400
     }    
      ```
 2. Пользователь ввёл отрицательное число.
@@ -905,11 +969,11 @@ Code 401 - Пользователь указал некорректный ток
 
     ```
     {
-      "object": "error",
-      "message": "max_tokens must be at least 1, got -1.",
-      "type": "BadRequestError",
-      "param": null,
-      "code": 400
+       "object": "error",
+       "message": "max_tokens must be at least 1, got -1.",
+       "type": "BadRequestError",
+       "param": null,
+       "code": 400
     }
     ```
     где -1 - это число, введенное пользователем, может быть любое отрицательное.
@@ -920,11 +984,17 @@ Code 401 - Пользователь указал некорректный ток
 
     ```
     {
-      "object": "error",
-      "message": "[{'type': 'int_from_float', 'loc': ('body', 'max_tokens'), 'msg': 'Input should be a valid integer, got a number with a fractional part', 'input': 1.5}]",
-      "type": "BadRequestError",
-      "param": null,
-      "code": 400
+       "object": "error",
+       "message": "[
+       {
+          'type': 'int_from_float',
+          'loc': ('body', 'max_tokens'),
+          'msg': 'Input should be a valid integer, got a number with a fractional part',
+          'input': 1.5
+       }]",
+       "type": "BadRequestError",
+       "param": null,
+       "code": 400
     }
     ```
 4. Если значение атрибута превышает текущее ограничение модели.
@@ -933,11 +1003,11 @@ Code 401 - Пользователь указал некорректный ток
 
     ```
     {
-      "object": "error",
-      "message": "This model's maximum context length is 32768 tokens. However, you requested 100000347 tokens (347 in the messages, 100000000 in the completion). Please reduce the length of the messages or completion.",
-      "type": "BadRequestError",
-      "param": null,
-      "code": 400
+       "object": "error",
+       "message": "This model's maximum context length is 32768 tokens. However, you requested 100000347 tokens (347 in the messages, 100000000 in the completion). Please reduce the length of the messages or completion.",
+       "type": "BadRequestError",
+       "param": null,
+       "code": 400
     }
     ```
     Где `X` - длина контекстного окна модели, меняется в зависимости от развернутой модели, <br>
@@ -952,11 +1022,17 @@ Code 401 - Пользователь указал некорректный ток
 
     ```
     {
-      "object": "error",
-      "message": "[{'type': 'int_parsing', 'loc': ('body', 'n'), 'msg': 'Input should be a valid integer, unable to parse string as an integer', 'input': 'gh'}]",
-      "type": "BadRequestError",
-      "param": null,
-      "code": 400
+       "object": "error",
+       "message": "[
+        {
+           'type': 'int_parsing',
+           'loc': ('body', 'n'),
+           'msg': 'Input should be a valid integer, unable to parse string as an integer',
+           'input': 'gh'
+        }]",
+        "type": "BadRequestError",
+        "param": null,
+        "code": 400
     }
     ```
 
@@ -966,11 +1042,11 @@ Code 401 - Пользователь указал некорректный ток
 
     ```
     {
-      "object": "error",
-      "message": "n must be at least 1, got -1.",
-      "type": "BadRequestError",
-      "param": null,
-      "code": 400
+       "object": "error",
+       "message": "n must be at least 1, got -1.",
+       "type": "BadRequestError",
+       "param": null,
+       "code": 400
     }
     ```
 
@@ -981,11 +1057,17 @@ Code 401 - Пользователь указал некорректный ток
     ```
    {
       "object": "error",
-      "message": "[{'type': 'int_from_float', 'loc': ('body', 'n'), 'msg': 'Input should be a valid integer, got a number with a fractional part', 'input': 1.5}]",
+      "message": "[
+      {
+         'type': 'int_from_float',
+         'loc': ('body', 'n'),
+         'msg': 'Input should be a valid integer, got a number with a fractional part',
+         'input': 1.5
+      }]",
       "type": "BadRequestError",
       "param": null,
       "code": 400
-    }
+   }
     ```
 4. Значение n не должно быть больше 10.
 
@@ -998,7 +1080,7 @@ Code 401 - Пользователь указал некорректный ток
       "type": "BadRequestError",
       "param": null,
       "code": 400
-    }
+   }
     ```
 
 ## 2.7 Атрибут: stream, опциональный
@@ -1010,7 +1092,13 @@ Code 401 - Пользователь указал некорректный ток
 ```
  {
     "object": "error",
-    "message": "[{'type': 'bool_type', 'loc': ('body', 'stream'), 'msg': 'Input should be a valid boolean', 'input': 1.5}]",
+    "message": "[
+    {
+       'type': 'bool_type',
+       'loc': ('body', 'stream'),
+       'msg': 'Input should be a valid boolean',
+       'input': 1.5
+    }]",
     "type": "BadRequestError",
     "param": null,
     "code": 400
@@ -1026,7 +1114,13 @@ Code 401 - Пользователь указал некорректный ток
     ```
    {
       "object": "error",
-      "message": "[{'type': 'float_parsing', 'loc': ('body', 'frequency_penalty'), 'msg': 'Input should be a valid number, unable to parse string as a number', 'input': 'gh'}]",
+      "message": "[
+      {
+         'type': 'float_parsing',
+         'loc': ('body', 'frequency_penalty'),
+         'msg': 'Input should be a valid number, unable to parse string as a number',
+         'input': 'gh'
+      }]",
       "type": "BadRequestError",
       "param": null,
       "code": 400
@@ -1057,7 +1151,13 @@ Code 401 - Пользователь указал некорректный ток
     ```
    {
       "object": "error",
-      "message": "[{'type': 'float_parsing', 'loc': ('body', 'presence_penalty'), 'msg': 'Input should be a valid number, unable to parse string as a number', 'input': 'gh'}]",
+      "message": "[
+      {
+         'type': 'float_parsing',
+         'loc': ('body', 'presence_penalty'),
+         'msg': 'Input should be a valid number, unable to parse string as a number',
+         'input': 'gh'
+      }]",
       "type": "BadRequestError",
       "param": null,
       "code": 400
@@ -1087,11 +1187,18 @@ Code 401 - Пользователь указал некорректный ток
 
 ```
 {
-   "object": "error",
-   "message": "[{'type': 'json_invalid', 'loc': ('body', 65), 'msg': 'JSON decode error', 'input': {}, 'ctx': {'error': 'Expecting value'}}]",
-   "type": "BadRequestError",
-   "param": null,
-   "code": 400
+    "object": "error",
+    "message": "[
+    {
+       'type': 'json_invalid',
+       'loc': ('body', 65),
+       'msg': 'JSON decode error',
+       'input': {},
+       'ctx': {'error': 'Expecting value'}
+    }]",
+    "type": "BadRequestError",
+    "param": null,
+    "code": 400
 }
 ```
 
@@ -1123,8 +1230,13 @@ Code 401 - Пользователь указал некорректный ток
     ```
    {
       "object": "error",
-      "message": "[{
-        'type': 'missing', 'loc': ('body', 'prompt'), 'msg': 'Field required', 'input': {'model': 'model_name}}]",
+      "message": "[
+      {
+         'type': 'missing',
+         'loc': ('body', 'prompt'),
+         'msg': 'Field required',
+         'input': {'model': 'model_name}
+      }]",
       "type": "BadRequestError",
       "param": null,
       "code": 400
@@ -1149,10 +1261,26 @@ Code 401 - Пользователь указал некорректный ток
 
     ```
    {
-      "object": "error",
-      "message": "[{'type': 'missing', 'loc': ('body', 'model'), 'msg': 'Field required', 'input': {'messages': [{'role': 'system', 'content': 'promt'}, {'role': 'user', 'content': 'promt'}]}}]",
-      "type": "BadRequestError",
-      "param": null,
-      "code": 400
+       "object": "error",
+       "message": "[
+       {
+          'type': 'missing',
+          'loc': ('body', 'model'),
+          'msg': 'Field required',
+          'input': {
+             'messages': [
+             {
+                'role': 'system',
+                'content': 'promt'
+             }, 
+             {
+                'role': 'user',
+                'content': 'promt'
+             }]
+          }
+       }]",
+       "type": "BadRequestError",
+       "param": null,
+       "code": 400
    }
     ```
