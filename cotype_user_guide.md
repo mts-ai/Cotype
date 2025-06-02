@@ -190,7 +190,7 @@ Cotype — это большая языковая модель для генер
       "prompt_tokens": 89,
       "total_tokens": 193,
       "completion_tokens": 104
-	 },
+   },
    "prompt_logprobs": null
 }
 ```
@@ -643,40 +643,40 @@ https://IP_Address/v1/embeddings
 
 1. Нажмите кнопку **"Новый чат"**.
 
-   <img src="images_user_guide/create_new_chart.png" width=400 height=270>
+   <img src="images_user_guide/create_new_chart.png" >
 
 2. Выберите одну из предложенных масок. <br> Маска — это роль или личность, от лица которой модель будет с вами общаться.
 
-   <img src="images_user_guide/choose-mask.png" width=400 height=270>
+   <img src="images_user_guide/choose-mask.png" >
 
    Для пропуска этапа выбора маски, нажмите **"Начать сразу"**. В этом случае модель не будет использовать маску и произойдет переход к новому чату.
 
-   <img src="images_user_guide/start-new-chat.png" width=400 height=200>
+   <img src="images_user_guide/start-new-chat.png" >
 
    Если вы не хотите возвращаться к выбору маски при создании новых чатов в будущем, нажмите **"Больше не показывать"** (смотрите скриншот с выбором маски). <br>  Появится окно отключение выбора маски. Нажмите **"Подтвердить"** для сохранения своего выбора. 
 
-   <img src="images_user_guide/apply-window.png" width=400 height=100>
+   <img src="images_user_guide/apply-window.png" >
 
    Для просмотра полного списка масок, нажмите кнопку **"Показать все"** (смотрите скриншот с выбором маски). Появится список предустановленных ролей. 
 
-   <img src="images_user_guide/built-roles.png" width=500 height=250>
+   <img src="images_user_guide/built-roles.png">
 
    Если вы хотите изучить настройки перед выбором роли, нажмите **"Просмотреть"**. В окне редактирование предустановленной маски показаны настройки для роли. 
 
-   <img src="images_user_guide/role-settings.png" width=440 height=275>
+   <img src="images_user_guide/role-settings.png" >
 
    Вы можете скачать json-файл с настройками, используя кнопку **"Скачать предустановку"** внизу окна. <br>
    Для изменения настроек роли, клонируйте ее. Для этого нажмите **"Клонировать предустановку"**. В списке предустановленных ролей появится клонированная роль. Нажмите кнопку **"Редактировать"** для изменения ее настроек.  
 
-   <img src="images_user_guide/cloned-role.png" width=440 height=260>
+   <img src="images_user_guide/cloned-role.png" >
 
 3. После изучения настроек роли, выберите ее из списка. Для этого нажмите кнопку **"+Диалог"** напротив роли (смотрите скриншот с настройками роли). Произойдет переход к чату для выбранной роли.
 
-   <img src="images_user_guide/role-dialog.png" width=440 height=260>
+   <img src="images_user_guide/role-dialog.png">
 
    Чтобы быстро найти роль в списке, вы можете использовать поиск. Введите в поле "Поиск ролей" (смотрите скриншот с клонированной ролью) полное название роли или первые буквы в ее названии. В списке отобразятся найденные роли. 
  
-   <img src="images_user_guide/search-role.png" width=440 height=260>
+   <img src="images_user_guide/search-role.png" >
 
    Для поиска роли, вы можете отфильтровать список по требуемому языку. Для этого нажмите кнопку **"Все языки"** и выберите из списка требуемый язык. 
 
@@ -690,7 +690,7 @@ https://IP_Address/v1/embeddings
 
 1. Выберите нужный вам чат из списка чатов в левой панели экрана. 
 
-   <img src="images_user_guide/chat-model.png" width=450 height=270>
+   <img src="images_user_guide/chat-model.png">
 
 2. Введите промпт в строке и нажмите **ENTER** на клавиатуре или кнопку **"Отправить"**.
 3. Ждите ответа модели. <br> Используйте кнопку **"Быстрая команда"**  или **"/"** в строке для выбора промптов из списка.
@@ -728,7 +728,7 @@ https://IP_Address/v1/embeddings
 - изменить основные настройки модели. Например, случайность (`temperature`), ядро выборки (`top_p`), ограничение на количество токенов (`max_tokens`), наказание за новизну тем (`presense_penalty`) и другие.   
 - сохранить текущий чат как маску. 
 
-  <img src="images_user_guide/current-chat-settings.png" width=444 height=275>
+  <img src="images_user_guide/current-chat-settings.png" >
 
 **Таблица 6**. Основные настройки чата
 
