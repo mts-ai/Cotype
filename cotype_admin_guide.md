@@ -452,7 +452,7 @@ INFO: Unicorn running on http://. . . . .
 |stop | string/array/null | |Список строк, после которых останавливается генерация. Эти строки не будут включены в ответ.  |
 |parallel_tool_calls| boolean | По умолчанию: true |Определяет следует ли включать параллельный вызов функций/тулов. |
 |tool_choice | string |  |Определяет как модель выбирает tools. Значения - **auto**, **none**, **required**, или задайте функцию. |
-|tools | array|  |Список функций (тулов) с описаниями и аргументами, среди которых модель может выбрать необходимые тулы и извлечь значения аргументов из промпта для использования приложением. Подробнее про добавление функции смотрите в разделе [4.2 - Добавление функции function-calling-tool-use через дополнительные аргументы](#42-добавление-функции-function-calling-tool-use-через-дополнительные-аргументы). |
+|tools | array|  |Список функций (тулов) с описаниями и аргументами, среди которых модель может выбрать необходимые тулы и извлечь значения аргументов из промпта для использования приложением. Подробнее про добавление функции смотрите в разделе [4.2 - Добавление функции function calling (tool use) через дополнительные аргументы](#42-добавление-функции-function-calling-tool-use-через-дополнительные-аргументы). |
 |&nbsp;&nbsp;function | object|  |Вызываемая функция. |
 |&nbsp;&nbsp;&nbsp;&nbsp; description | string |  |Описание функции, включая инструкцию, когда и как ее вызвать. |
 |&nbsp;&nbsp;&nbsp;&nbsp; name | string |  |Название функции. |
@@ -486,7 +486,7 @@ INFO: Unicorn running on http://. . . . .
 
   ```
   {
-    "model": "cotype_pro_16k_1.1",
+    "model": "cotype_pro_2",
     "messages": [
     {
        "role": "system",
@@ -506,7 +506,7 @@ INFO: Unicorn running on http://. . . . .
    -H "Content-Type: application/json" \
    -H "Authorization: Bearer Token" \
    -d '{
-      "model": "cotype_pro_16k_1.1",
+      "model": "cotype_pro_2",
       "messages": [
       {
          "role": "system",
@@ -525,29 +525,29 @@ INFO: Unicorn running on http://. . . . .
 
 ```
 {
-   "id": "cmpl-e263c7d6179a43e98b2ca9580b57e4f6",
-   "object": "chat.completion",
-   "created": 1724069159,
-   "model": "cotype_pro_16k_1.1",
-   "choices": [
-    {
-       "index": 0,
-       "message":
+    "id": "chatcmpl-db457e150dcb4c358fd2bab38db5d4f6",
+    "object": "chat.completion",
+    "created": 1748963043,
+    "model": "cotype_pro_2",
+    "choices": [
         {
-           "role": "assistant",
-           "content": "Москва, столица России, - это тысячелетний город с богатой историей и архитектурой, где древнерусские храмы и кремли, таких как Красная площадь и Московский Кремль, соседствуют с современными небоскребами и шумными улицами, создавая уникальный контраст между прошлым и настоящим."
-           "tool_calls": []
-        },
-        "logprobs": null,
-        "finish_reason": "stop",
-        "stop_reason": null
-    }],
-    "usage":
-    {
-       "prompt_tokens": 89,
-       "total_tokens": 193,
-       "completion_tokens": 104
-    },
+            "index": 0,
+            "message": {
+               "role": "assistant",
+               "reasoning_content": null,
+               "content": "Москва, столица России, - это тысячелетний город с богатой историей и архитектурой, где древнерусские храмы и кремли, таких как Красная площадь и Московский Кремль, соседствуют с современными небоскребами и шумными улицами, создавая уникальный контраст между прошлым и настоящим."
+               "tool_calls": []
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null
+        }
+    ],
+    "usage": {
+        "prompt_tokens": 89,
+        "total_tokens": 193,
+        "completion_tokens": 104
+	  },
     "prompt_logprobs": null
 }
 ```
@@ -558,8 +558,8 @@ INFO: Unicorn running on http://. . . . .
 |-------|---------|----------|-------|
 |id| string | cmpl-e263c7d6179a43e98b2ca9580b57e4f6 | Идентификатор запроса. |
 |object| string | chat.completion | Тип объект. |
-|created| integer | 1724069159 | Временная метка UNIX (в секундах), отмечающая дату и время, когда был создан запрос. |
-|model| string | cotype_pro_16k_1.1 | ID модели, к которой вы обращались и которая ответила на ваш запрос. |
+|created| integer | 1748963043 | Временная метка UNIX (в секундах), отмечающая дату и время, когда был создан запрос. |
+|model| string | cotype_pro_2 | ID модели, к которой вы обращались и которая ответила на ваш запрос. |
 |choices| array |  | Список вариантов завершения чата. |
 |&nbsp;&nbsp; index| integer | 0 | Индекс выбора в списке вариантов. |
 |&nbsp;&nbsp; message| object |  | Сгенерированное моделью сообщение. |
