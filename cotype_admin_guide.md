@@ -136,7 +136,7 @@
 |-------|-----|
 |Рекомендованная ОС | Ubuntu 24.04 LTS (Noble Numbat) › <br> Ubuntu 22.04.4 LTS (Jammy Jellyfish) ›<br> Ubuntu 20.04.6 LTS (Focal Fossa) <br> Rockylinux8 <br>Поддерживается работа на Astra Linux  |
 |Docker| Docker version 24.0.4 + <br> Kubernetes 1.24 + |
-|Nvidia-Docker <br>NVIDIA Container Toolkit| Docker version 24.0.4 + <br> Kubernetes 1.24 + |
+|Nvidia-Docker <br>NVIDIA Container Toolkit| [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)<br> NVIDIA Driver версия 525.105.17+ <br>CUDA версия 12.0+ |
 |Интернет| Наличие доступа к Интернет для контейнеров и дополнительных загрузок ПО при установке сервиса. Для работы сервиса доступ к Интернет не требуется. |
 
 ## 2.2 Требования к аппаратному обеспечению 
