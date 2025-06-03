@@ -547,7 +547,7 @@ INFO: Unicorn running on http://. . . . .
         "prompt_tokens": 89,
         "total_tokens": 193,
         "completion_tokens": 104
-	  },
+	},
     "prompt_logprobs": null
 }
 ```
@@ -722,31 +722,33 @@ else:
 
 ```
 {
-   "object": "list",
-   "data": [
-   {
-      "id": "cotype_pro_16k_1.1",
-      "object": "model",
-      "created": 1724087433,
-      "owned_by": "vLLM",
-      "root": "cotype_pro_16k_1.1",
-      "parent": null,
-      "permission": [
-      {
-         "id": "modelperm-1b7dd7dea5244bdb888971bf2b89f6ff",
-         "object": "model_permission",
-         "created": 1724087433,
-         "allow_create_engine": false,
-         "allow_sampling": true,
-         "allow_logprobs": true,
-         "allow_search_indices": false,
-         "allow_view": true,
-         "allow_fine_tuning": false,
-         "organization": "*",
-         "group": null,
-         "is_blocking": false
-      }]
-   }]
+    "object": "list",
+    "data": [
+        {
+            "id": "cotype_pro_2",
+            "object": "model",
+            "created": 1748228864,
+            "owned_by": "vLLM",
+            "root": "/data/models/infer/model",
+            "parent": null,
+            "permission": [
+                {
+                    "id": "modelperm-5f9920eb9187466b998ccccd208c9f95",
+                    "object": "model_permission",
+                    "created": 1748228864,
+                    "allow_create_engine": false,
+                    "allow_sampling": true,
+                    "allow_logprobs": true,
+                    "allow_search_indices": false,
+                    "allow_view": true,
+                    "allow_fine_tuning": false,
+                    "organization": "*",
+                    "group": null,
+                    "is_blocking": false
+                }
+            ]
+        }
+    ]
 }
 ```
 
@@ -834,7 +836,7 @@ https://{IP-адрес}/v1/completions
    curl  https://{IP-адрес}/v1/completions \
      -H "Content-Type: application/json" \
      -H "Authorization: Bearer Token" \
-     -d '{"model": "cotype_pro_16k_1.1", "prompt": "Тестовый запрос"}'
+     -d '{"model": "cotype_pro_2", "prompt": "Тестовый запрос"}'
    ```
    
  ### 5.4.2 Результат выполнения запроса POST/v1/completions
@@ -843,24 +845,26 @@ https://{IP-адрес}/v1/completions
 
 ```
 {
-   "id": "cmpl-b1e39b7c457f46e2af97b47e921cf64c",
-   "object": "text_completion",
-   "created": 1740518640,
-   "model": "cotype_pro_16k_1.1",
-   "choices": [
-   {
-      "index": 0,
-      "text": "! Как дела?\r",
-      "logprobs": null,
-      "finish_reason": "stop",
-      "stop_reason": "\n",
-      "prompt_logprobs": null
-   }],
-   "usage": {
-      "prompt_tokens": 116,
-      "total_tokens": 121,
-      "completion_tokens": 5
-   }
+    "id": "cmpl-b1e39b7c457f46e2af97b47e921cf64c",
+    "object": "text_completion",
+    "created": 1740518640,
+    "model": "cotype_pro_2",
+    "choices": [
+        {
+            "index": 0,
+            "text": "! Как дела?\r",
+            "logprobs": null,
+            "finish_reason": "length",
+            "stop_reason": null,
+            "prompt_logprobs": null
+        }
+    ],
+    "usage": {
+        "prompt_tokens": 116,
+        "total_tokens": 121,
+        "completion_tokens": 5,
+        "prompt_tokens_details": null
+    }
 }
 ```
 
@@ -871,7 +875,7 @@ https://{IP-адрес}/v1/completions
 |id | string | cmpl-b1e39b7c457f46e2af97b47e921cf64c  | Идентификатор запроса. |
 |object| string | text.completion  | Тип объект. |
 |created| integer  | 1740518640  | Временная метка UNIX (в секундах), отмечающая дату и время, когда был создан запрос. |
-|model| string  | cotype_pro_16k_1.1  | ID модели, к которой вы обращались и, которая ответила на ваш запрос. |
+|model| string  | cotype_pro_2  | ID модели, к которой вы обращались и, которая ответила на ваш запрос. |
 |choices| array  |  |Список вариантов завершения чата.  |
 |&nbsp;&nbsp; index| integer  | 0 |Индекс выбора в списке вариантов.  |
 |&nbsp;&nbsp; text| string  | |Сгенерированное моделью сообщение.  |
@@ -1334,8 +1338,8 @@ Delete user2 user2@example.ru with
 |OPENAI_API_KEY (опциональный параметр) | Токен, с которым чат-интерфейс будет обращаться к LLM, если пользователь указал только access code.| 
 
 3. Заполните *ENV-файл* следующим образом:
-- `CUSTOM_MODELS: -all,+cotype_pro_16k_1.1`
-- `DEFAULT_MODEL:  cotype_pro_16k_1.1`
+- `CUSTOM_MODELS: -all,+cotype_pro_2`
+- `DEFAULT_MODEL:  cotype_pro_2`
 - `OPENAI_API_KEY: <токен для отправки запросов к API>`
 
    В переменной `CUSTOM MODELS` может быть указано несколько моделей. Проверьте заполнение, должно быть аналогично примеру: перед моделью от МТС ИИ проставлен знак "+", перед all и остальными названиями моделей указан знак "-". 
@@ -1411,7 +1415,7 @@ Code 401 - Пользователь указал некорректный ток
 
    ```
    {
-      "object": "error", "message": "[{'type': 'missing','loc': ('body', 'messages'),'msg': 'Field required', 'input': {'model':'cotype_light_4k_2.0'}}]", 
+      "object": "error", "message": "[{'type': 'missing','loc': ('body', 'messages'),'msg': 'Field required', 'input': {'model':'cotype_pro_2.0'}}]", 
       "type": "BadRequestError",
       "param": null,
       "code": 400
