@@ -633,7 +633,7 @@ https://IP_Address/v1/embeddings
 
     Токен можно получить у администратора. Токен может быть как личным, при пользовательской авторизации, так и общим, при однотокеновой. 
 
-    <img src="images_user_guide/user_authentification.png" width=400 height=270>
+    <img src="images_user_guide/user_authentification.png">
     
    **Способ 2**. Введите access_code в поле "код доступа".
 
