@@ -129,7 +129,7 @@ Cotype — это большая языковая модель для генер
 
   ```
   {
-     "model": "cotype_pro_16k_1.1",
+     "model": "cotype_pro_2",
      "messages": [
      {
         "role": "system",
@@ -149,7 +149,7 @@ Cotype — это большая языковая модель для генер
    -H "Content-Type: application/json" \
    -H "Authorization: Bearer Token" \
    -d '{
-          "model": "cotype_pro_16k_1.1",
+          "model": "cotype_pro_2",
           "messages": [
           {
              "role": "system",
@@ -168,30 +168,30 @@ Cotype — это большая языковая модель для генер
 
 ```
 {
-   "id": "cmpl-e263c7d6179a43e98b2ca9580b57e4f6",
-   "object": "chat.completion",
-   "created": 1724069159,
-   "model": "cotype_pro_16k_1.1",
-   "choices": [
-   {
-      "index": 0,
-      "message":
-      {
-         "role": "assistant",
-         "content": "Москва, столица России, - это тысячелетний город с богатой историей и архитектурой, где древнерусские храмы и кремли, таких как Красная площадь и Московский Кремль, соседствуют с современными небоскребами и шумными улицами, создавая уникальный контраст между прошлым и настоящим."
-         "tool_calls": []
-      },
-      "logprobs": null,
-      "finish_reason": "stop",
-      "stop_reason": null
-   }],
-   "usage":
-   {
-      "prompt_tokens": 89,
-      "total_tokens": 193,
-      "completion_tokens": 104
-   },
-   "prompt_logprobs": null
+    "id": "chatcmpl-db457e150dcb4c358fd2bab38db5d4f6",
+    "object": "chat.completion",
+    "created": 1748963043,
+    "model": "cotype_pro_2",
+    "choices": [
+        {
+            "index": 0,
+            "message": {
+               "role": "assistant",
+               "reasoning_content": null,
+               "content": "Москва, столица России, - это тысячелетний город с богатой историей и архитектурой, где древнерусские храмы и кремли, таких как Красная площадь и Московский Кремль, соседствуют с современными небоскребами и шумными улицами, создавая уникальный контраст между прошлым и настоящим."
+               "tool_calls": []
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null
+        }
+    ],
+    "usage": {
+        "prompt_tokens": 89,
+        "total_tokens": 193,
+        "completion_tokens": 104
+	},
+    "prompt_logprobs": null
 }
 ```
 
@@ -374,31 +374,33 @@ else:
 
 ```
 {
-   "object": "list",
-   "data": [
-   {
-      "id": "cotype_pro_16k_1.1",
-      "object": "model",
-      "created": 1724087433,
-      "owned_by": "vLLM",
-      "root": "cotype_pro_16k_1.1",
-      "parent": null,
-      "permission": [
-      {
-         "id": "modelperm-1b7dd7dea5244bdb888971bf2b89f6ff",
-         "object": "model_permission",
-         "created": 1724087433,
-         "allow_create_engine": false,
-         "allow_sampling": true,
-         "allow_logprobs": true,
-         "allow_search_indices": false,
-         "allow_view": true,
-         "allow_fine_tuning": false,
-         "organization": "*",
-         "group": null,
-         "is_blocking": false
-      } ]
-   }]
+    "object": "list",
+    "data": [
+        {
+            "id": "cotype_pro_2",
+            "object": "model",
+            "created": 1748228864,
+            "owned_by": "vLLM",
+            "root": "/data/models/infer/model",
+            "parent": null,
+            "permission": [
+                {
+                    "id": "modelperm-5f9920eb9187466b998ccccd208c9f95",
+                    "object": "model_permission",
+                    "created": 1748228864,
+                    "allow_create_engine": false,
+                    "allow_sampling": true,
+                    "allow_logprobs": true,
+                    "allow_search_indices": false,
+                    "allow_view": true,
+                    "allow_fine_tuning": false,
+                    "organization": "*",
+                    "group": null,
+                    "is_blocking": false
+                }
+            ]
+        }
+    ]
 }
 ```
 
@@ -485,7 +487,7 @@ https://{IP-адрес}/v1/completions
     curl  https://{IP-адрес}/v1/completions \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer Token" \
-    -d '{"model": "cotype_pro_16k_1.1", "prompt": "Тестовый запрос"}'
+    -d '{"model": "cotype_pro_2", "prompt": "Тестовый запрос"}'
    ```
    
  ### 3.4.2 Результат выполнения запроса POST/v1/completions
@@ -494,24 +496,26 @@ https://{IP-адрес}/v1/completions
 
 ```
 {
-   "id": "cmpl-b1e39b7c457f46e2af97b47e921cf64c",
-   "object": "text_completion",
-   "created": 1740518640,
-   "model": "cotype_pro_16k_1.1",
-   "choices": [
-   {
-      "index": 0,
-      "text": "! Как дела?\r",
-      "logprobs": null,
-      "finish_reason": "stop",
-      "stop_reason": "\n",
-      "prompt_logprobs": null
-   }],
-   "usage": {
-      "prompt_tokens": 116,
-      "total_tokens": 121,
-      "completion_tokens": 5
-   }
+    "id": "cmpl-b1e39b7c457f46e2af97b47e921cf64c",
+    "object": "text_completion",
+    "created": 1740518640,
+    "model": "cotype_pro_2",
+    "choices": [
+        {
+            "index": 0,
+            "text": "! Как дела?\r",
+            "logprobs": null,
+            "finish_reason": "length",
+            "stop_reason": null,
+            "prompt_logprobs": null
+        }
+    ],
+    "usage": {
+        "prompt_tokens": 116,
+        "total_tokens": 121,
+        "completion_tokens": 5,
+        "prompt_tokens_details": null
+    }
 }
 ```
 
@@ -741,7 +745,7 @@ https://IP_Address/v1/embeddings
 |Штраф за повторения  | Положительные значения накладывают штраф на новые токены в зависимости от их появления в тексте до этого момента, увеличивая вероятность обсуждения новых тем. |  
 |Штраф за частоту  | Положительные значения штрафуют новые токены на основе их текущей частоты в тексте, снижая вероятность повторения одной и той же строки дословно. |  
 
-> Рекомендуется изменять либо температуру, либо Top P, но не обе настройки одновременно.
+> Рекомендуется изменять либо температуру, либо Top_P, но не обе настройки одновременно.
 
 ## 4.5 Изменение общих настроек
 
@@ -825,7 +829,7 @@ Code 401 - Пользователь указал некорректный ток
 
    ```
    {
-      "object": "error", "message": "[{'type': 'missing','loc': ('body', 'messages'),'msg': 'Field required', 'input': {'model':'cotype_light_4k_2.0'}}]", 
+      "object": "error", "message": "[{'type': 'missing','loc': ('body', 'messages'),'msg': 'Field required', 'input': {'model':'cotype_pro_2'}}]", 
       "type": "BadRequestError",
       "param": null,
       "code": 400
