@@ -1387,27 +1387,10 @@ Code 401 - Пользователь указал некорректный ток
    ```
    {
       "object": "error",
-      "message": "[
-      {
-         'type': 'missing',
-         'loc': ('body', 'model'),
-         'msg': 'Field required',
-         'input':
-         {
-            'messages': "[
-            {
-               'role': 'system', 
-               'content': 'promt'
-            },
-            {
-               'role': 'user',
-               'content': 'promt'
-            }]"
-         },
-     "type": "BadRequestError",
-     "param": null,
-     "code": 400
-     }]"
+      "message": "[{'type': 'missing','loc': ('body', 'model'),'msg': 'Field required','input':{'messages': "[{'role': 'system','content':'promt'},{'role': 'user','content': 'promt'}]}}]",
+      "type": "BadRequestError",
+      "param": null,
+      "code": 400     
    }
    ```
 
@@ -1428,20 +1411,10 @@ Code 401 - Пользователь указал некорректный ток
 
    ```
    {
-      "object": "error",
-      "message": "[
-      {
-         'type': 'missing',
-         'loc': ('body', 'messages'),
-         'msg': 'Field required',
-         'input': 
-         {
-            'model': 'cotype_light_4k_2.0'
-         }
-      }]", 
-     "type": "BadRequestError",
-     "param": null,
-     "code": 400
+      "object": "error", "message": "[{'type': 'missing','loc': ('body', 'messages'),'msg': 'Field required', 'input': {'model':'cotype_light_4k_2.0'}}]", 
+      "type": "BadRequestError",
+      "param": null,
+      "code": 400
    }
    ```
 ## 2.3 Атрибут: temperature, опциональный
@@ -1453,13 +1426,7 @@ Code 401 - Пользователь указал некорректный ток
    ```
    {
       "object": "error",
-      "message": "[
-      {
-         'type': 'float_parsing',
-         'loc': ('body', 'temperature'),
-         'msg': 'Input should be a valid number, unable to parse string as a number',
-         'input': 'gh'
-      }]",
+      "message": "[{'type': 'float_parsing','loc': ('body', 'temperature'),'msg': 'Input should be a valid number, unable to parse string as a number','input': 'gh'}]",
       "type": "BadRequestError",
       "param": null,
       "code": 400
@@ -1502,13 +1469,7 @@ Code 401 - Пользователь указал некорректный ток
     ```
     {
        "object": "error",
-       "message": "[
-       {
-          'type': 'float_parsing',
-          'loc': ('body', 'top_p'),
-          'msg': 'Input should be a valid number, unable to parse string as a number',
-          'input': 'gh'
-       }]",
+       "message": "[{'type': 'float_parsing','loc': ('body', 'top_p'),'msg': 'Input should be a valid number, unable to parse string as a number', 'input': 'gh'}]",
        "type": "BadRequestError",
        "param": null,
        "code": 400
@@ -1537,13 +1498,7 @@ Code 401 - Пользователь указал некорректный ток
     ```
     {
        "object": "error",
-       "message": "[
-       {
-          'type': 'int_parsing',
-          'loc': ('body', 'max_tokens'),
-          'msg': 'Input should be a valid integer, unable to parse string as an integer',
-          'input': 'gh'
-       }]",
+       "message": "[{'type': 'int_parsing','loc': ('body', 'max_tokens'),'msg': 'Input should be a valid integer, unable to parse string as an integer', 'input': 'gh'}]",
        "type": "BadRequestError",
        "param": null,
        "code": 400
@@ -1571,13 +1526,7 @@ Code 401 - Пользователь указал некорректный ток
     ```
     {
        "object": "error",
-       "message": "[
-       {
-          'type': 'int_from_float',
-          'loc': ('body', 'max_tokens'),
-          'msg': 'Input should be a valid integer, got a number with a fractional part',
-          'input': 1.5
-       }]",
+       "message": "[{'type': 'int_from_float', 'loc': ('body', 'max_tokens'),'msg': 'Input should be a valid integer, got a number with a fractional part','input': 1.5}]",
        "type": "BadRequestError",
        "param": null,
        "code": 400
@@ -1609,16 +1558,10 @@ Code 401 - Пользователь указал некорректный ток
     ```
     {
        "object": "error",
-       "message": "[
-        {
-           'type': 'int_parsing',
-           'loc': ('body', 'n'),
-           'msg': 'Input should be a valid integer, unable to parse string as an integer',
-           'input': 'gh'
-        }]",
-        "type": "BadRequestError",
-        "param": null,
-        "code": 400
+       "message": "[{'type': 'int_parsing', 'loc': ('body', 'n'), 'msg': 'Input should be a valid integer, unable to parse string as an integer', 'input': 'gh'}]",
+       "type": "BadRequestError",
+       "param": null,
+       "code": 400
     }
     ```
 
@@ -1643,13 +1586,7 @@ Code 401 - Пользователь указал некорректный ток
     ```
    {
       "object": "error",
-      "message": "[
-      {
-         'type': 'int_from_float',
-         'loc': ('body', 'n'),
-         'msg': 'Input should be a valid integer, got a number with a fractional part',
-         'input': 1.5
-      }]",
+      "message": "[{'type': 'int_from_float','loc': ('body', 'n'),'msg': 'Input should be a valid integer, got a number with a fractional part','input': 1.5}]",
       "type": "BadRequestError",
       "param": null,
       "code": 400
@@ -1678,13 +1615,7 @@ Code 401 - Пользователь указал некорректный ток
 ```
  {
     "object": "error",
-    "message": "[
-    {
-       'type': 'bool_type',
-       'loc': ('body', 'stream'),
-       'msg': 'Input should be a valid boolean',
-       'input': 1.5
-    }]",
+    "message": "[{'type': 'bool_type','loc': ('body', 'stream'),'msg': 'Input should be a valid boolean','input': 1.5}]",
     "type": "BadRequestError",
     "param": null,
     "code": 400
@@ -1700,13 +1631,7 @@ Code 401 - Пользователь указал некорректный ток
     ```
    {
       "object": "error",
-      "message": "[
-      {
-         'type': 'float_parsing',
-         'loc': ('body', 'frequency_penalty'),
-         'msg': 'Input should be a valid number, unable to parse string as a number',
-         'input': 'gh'
-      }]",
+      "message": "[{'type': 'float_parsing','loc': ('body', 'frequency_penalty'),'msg': 'Input should be a valid number, unable to parse string as a number','input': 'gh'}]",
       "type": "BadRequestError",
       "param": null,
       "code": 400
@@ -1737,13 +1662,7 @@ Code 401 - Пользователь указал некорректный ток
     ```
    {
       "object": "error",
-      "message": "[
-      {
-         'type': 'float_parsing',
-         'loc': ('body', 'presence_penalty'),
-         'msg': 'Input should be a valid number, unable to parse string as a number',
-         'input': 'gh'
-      }]",
+      "message": "[{'type': 'float_parsing','loc': ('body', 'presence_penalty'),'msg': 'Input should be a valid number, unable to parse string as a number', 'input': 'gh'}]",
       "type": "BadRequestError",
       "param": null,
       "code": 400
@@ -1774,14 +1693,7 @@ Code 401 - Пользователь указал некорректный ток
 ```
 {
     "object": "error",
-    "message": "[
-    {
-       'type': 'json_invalid',
-       'loc': ('body', 65),
-       'msg': 'JSON decode error',
-       'input': {},
-       'ctx': {'error': 'Expecting value'}
-    }]",
+    "message": "[{'type': 'json_invalid','loc': ('body', 65), 'msg': 'JSON decode error', 'input': {}, 'ctx': {'error': 'Expecting value'}}]",
     "type": "BadRequestError",
     "param": null,
     "code": 400
@@ -1816,13 +1728,7 @@ Code 401 - Пользователь указал некорректный ток
     ```
    {
       "object": "error",
-      "message": "[
-      {
-         'type': 'missing',
-         'loc': ('body', 'prompt'),
-         'msg': 'Field required',
-         'input': {'model': 'model_name}
-      }]",
+      "message": "[{'type': 'missing','loc': ('body', 'prompt'),'msg': 'Field required','input': {'model': 'model_name}}]",
       "type": "BadRequestError",
       "param": null,
       "code": 400
@@ -1848,23 +1754,7 @@ Code 401 - Пользователь указал некорректный ток
     ```
    {
        "object": "error",
-       "message": "[
-       {
-          'type': 'missing',
-          'loc': ('body', 'model'),
-          'msg': 'Field required',
-          'input': {
-             'messages': [
-             {
-                'role': 'system',
-                'content': 'promt'
-             }, 
-             {
-                'role': 'user',
-                'content': 'promt'
-             }]
-          }
-       }]",
+       "message": "[{'type': 'missing','loc': ('body', 'model'), 'msg': 'Field required', 'input': {'messages': [{'role': 'system', 'content': 'promt'}, {'role': 'user', 'content': 'promt'}]}}]",
        "type": "BadRequestError",
        "param": null,
        "code": 400
