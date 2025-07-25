@@ -97,8 +97,8 @@ Cotype — это большая языковая модель для генер
 |max_tokens| integer | Натуральное число, больше 0. |Максимальное количество токенов, которые могут быть сгенерированы в ответ на запрос пользователя. Это позволяет регулировать длину ответа. |
 |n| integer | Натуральное число больше 0. По умолчанию: 1.  |Количество ответов, которые модель сгенерирует. |
 |stream| boolean | True/False. По умолчанию: false. |Если установить значение true, ответ модели будет возвращаться не целиком сразу, а итеративно, по мере его формирования моделью. |
-|stream_options| object or null  |  <image src="images_user_guide/stream-options-example.png"> |Параметры для потокового ответа. Устанавливайте только при установке `stream: true`.  |
-|&nbsp;&nbsp; include_usage| boolean  | <image src="images_user_guide/usage-example.png"> |Если установлен в true,  то будет добавлен новый информационный фрагмент перед последним фрагментом `[DONE]`. Поле `usage` в этом фрагменте показывает статистику использования токенов для всего запроса, а поле `choices` всегда будет пустым массивом. |
+|stream_options| object or null  |  ![](https://raw.githubusercontent.com/mts-ai/cotype/main/images_user_guide/stream-options-example.png) |Параметры для потокового ответа. Устанавливайте только при установке `stream: true`.  |
+|&nbsp;&nbsp; include_usage| boolean  | ![](https://raw.githubusercontent.com/mts-ai/cotype/main/images_user_guide/usage-example.png) |Если установлен в true,  то будет добавлен новый информационный фрагмент перед последним фрагментом `[DONE]`. Поле `usage` в этом фрагменте показывает статистику использования токенов для всего запроса, а поле `choices` всегда будет пустым массивом. |
 |frequency_penalty| integer | Натуральное число от -2 до 2. |Штраф за частоту — число между -2.0 и 2.0. Положительные значения штрафуют новые токены, на основе их текущей частоты в тексте, снижая вероятность того, что модель повторит одну и ту же строку. |
 |presence_penalty| integer | Натуральное число от -2 до 2. |Положительные значения накладывают штраф на новые токены в зависимости от того, появляются ли они в тексте до сих пор, увеличивая вероятность того, что модель будет говорить о новых темах. |
 |logit_bias | map | По умолчанию: null |Позволяет изменять  вероятность появления указанных токенов в генерации. Принимает объект JSON, который сопоставляет токены (указанные по их идентификатору токена в токенизаторе) со связанным значением отклонения от -100 до 100. `logit_bias` позволяет запретить модели использовать некоторые ID токенов. Чем ближе значение параметра к -100, тем больше вероятность, что токен будет заблокирован моделью.  Чем ближе значение параметра к + 100, тем больше вероятность что токен будет использован моделью. |
@@ -470,7 +470,7 @@ https://{IP-адрес}/v1/completions
 |max_tokens| integer |Натуральное число, больше 0. По умолчанию: 16. | Максимальное количество токенов, которые могут быть сгенерированы в ответ на запрос пользователя. Это позволяет регулировать длину ответа. |
 |n| integer or null |Натуральное число больше 0. По умолчанию: 1. | Количество ответов, которые модель сгенерирует. |
 |stream| boolean or null |True/False. По умолчанию: false. | Если установить значение **true**, ответ модели будет возвращаться не целиком сразу, а итеративно, по мере его формирования моделью. |
-|stream_options | object or null  |<image src="images_user_guide/stream-true-example.png">  |Параметры для потокового ответа. Устанавливайте только при установке `stream: true`. |
+|stream_options | object or null  |![](https://raw.githubusercontent.com/mts-ai/cotype/main/images_user_guide/stream-true-example.png) |Параметры для потокового ответа. Устанавливайте только при установке `stream: true`. |
 |&nbsp;&nbsp;include_usage | boolean | |Если установлено, дополнительный фрагмент будет передан перед сообщением data: `[DONE]`. Поле `usage` в этом фрагменте показывает статистику использования токена для всего запроса, а поле `choices` всегда будет пустым массивом. Все остальные фрагменты также будут включать поле `usage`, но с "null" значением. |
 |frequency_penalty | integer |Натуральное число от -2 до 2. |Штраф за частоту — число между -2.0 и 2.0. Положительные значения штрафуют новые токены, на основе их текущей частоты в тексте, снижая вероятность того, что модель повторит одну и ту же строку. |
 |presence_penalty | integer |Натуральное число от -2 до 2. По умолчанию: 0. |Положительные значения накладывают штраф на новые токены в зависимости от того, появляются ли они в тексте до сих пор, увеличивая вероятность того, что модель будет говорить о новых темах. |
@@ -645,8 +645,8 @@ https://IP_Address/v1/embeddings
 
     Токен можно получить у администратора. Токен может быть как личным, при пользовательской авторизации, так и общим, при однотокеновой. 
 
-    <img src="images_user_guide/user_authentification.png">
-    
+    ![](https://raw.githubusercontent.com/mts-ai/cotype/main/images_user_guide/user_authentification.png)
+       
    **Способ 2**. Введите access_code в поле "код доступа".
 
    В этом случае в запросах к LLM будет использоваться тот токен, который администратор указал в `OPENAI_API_KEY`. <br>
@@ -659,45 +659,46 @@ https://IP_Address/v1/embeddings
 
 1. Нажмите кнопку **"Новый чат"**.
 
-   <img src="images_user_guide/create_new_chart.png" >
+   ![](https://raw.githubusercontent.com/mts-ai/cotype/main/images_user_guide/create_new_chart.png)
+   
 
 2. Выберите одну из предложенных масок. <br> Маска — это роль или личность, от лица которой модель будет с вами общаться.
 
-   <img src="images_user_guide/choose-mask.png" >
-
+   ![](https://raw.githubusercontent.com/mts-ai/cotype/main/images_user_guide/choose-mask.png)
+   
    Для пропуска этапа выбора маски, нажмите **"Начать сразу"**. В этом случае модель не будет использовать маску и произойдет переход к новому чату.
 
-   <img src="images_user_guide/start-new-chat.png" >
-
+   ![](https://raw.githubusercontent.com/mts-ai/cotype/main/images_user_guide/start-new-chat.png)
+   
    Если вы не хотите возвращаться к выбору маски при создании новых чатов в будущем, нажмите **"Больше не показывать"** (смотрите скриншот с выбором маски). <br>  Появится окно отключение выбора маски. Нажмите **"Подтвердить"** для сохранения своего выбора. 
 
-   <img src="images_user_guide/apply-window.png" >
-
+   ![](https://raw.githubusercontent.com/mts-ai/cotype/main/images_user_guide/apply-window.png)
+   
    Для просмотра полного списка масок, нажмите кнопку **"Показать все"** (смотрите скриншот с выбором маски). Появится список предустановленных ролей. 
 
-   <img src="images_user_guide/built-roles.png">
-
+   ![](https://raw.githubusercontent.com/mts-ai/cotype/main/images_user_guide/built-roles.png)
+   
    Если вы хотите изучить настройки перед выбором роли, нажмите **"Просмотреть"**. В окне редактирование предустановленной маски показаны настройки для роли. 
 
-   <img src="images_user_guide/role-settings.png" >
-
+     ![](https://raw.githubusercontent.com/mts-ai/cotype/main/images_user_guide/role-settings.png)
+   
    Вы можете скачать json-файл с настройками, используя кнопку **"Скачать предустановку"** внизу окна. <br>
    Для изменения настроек роли, клонируйте ее. Для этого нажмите **"Клонировать предустановку"**. В списке предустановленных ролей появится клонированная роль. Нажмите кнопку **"Редактировать"** для изменения ее настроек.  
 
-   <img src="images_user_guide/cloned-role.png" >
-
+   ![](https://raw.githubusercontent.com/mts-ai/cotype/main/images_user_guide/cloned-role.png)
+   
 3. После изучения настроек роли, выберите ее из списка. Для этого нажмите кнопку **"+Диалог"** напротив роли (смотрите скриншот с настройками роли). Произойдет переход к чату для выбранной роли.
 
-   <img src="images_user_guide/role-dialog.png">
-
+   ![](https://raw.githubusercontent.com/mts-ai/cotype/main/images_user_guide/role-dialog.png)
+   
    Чтобы быстро найти роль в списке, вы можете использовать поиск. Введите в поле "Поиск ролей" (смотрите скриншот с клонированной ролью) полное название роли или первые буквы в ее названии. В списке отобразятся найденные роли. 
  
-   <img src="images_user_guide/search-role.png" >
-
+   ![](https://raw.githubusercontent.com/mts-ai/cotype/main/images_user_guide/search-role.png)
+   
    Для поиска роли, вы можете отфильтровать список по требуемому языку. Для этого нажмите кнопку **"Все языки"** и выберите из списка требуемый язык. 
 
-   <img src="images_user_guide/sort-roles-by-language.png" width=180 height=262>
-
+   ![](https://raw.githubusercontent.com/mts-ai/cotype/main/images_user_guide/sort-roles-by-language.png)
+   
    Вы можете экспортировать или импортировать роль в json-формат. Для этого используйте соответствующие кнопки на экране **"Предустановленные роли"**. 
 
 ## 4.3 Взаимодействие с моделью
@@ -706,35 +707,35 @@ https://IP_Address/v1/embeddings
 
 1. Выберите нужный вам чат из списка чатов в левой панели экрана. 
 
-   <img src="images_user_guide/chat-model.png">
-
+    ![](https://raw.githubusercontent.com/mts-ai/cotype/main/images_user_guide/chat-model.png)
+   
 2. Введите промпт в строке и нажмите **ENTER** на клавиатуре или кнопку **"Отправить"**.
 3. Ждите ответа модели. <br> Используйте кнопку **"Быстрая команда"**  или **"/"** в строке для выбора промптов из списка.
  
-   <img src="images_user_guide/quick-command.png" >
-
+   ![](https://raw.githubusercontent.com/mts-ai/cotype/main/images_user_guide/quick-command.png)
+  
    После того как выбранный промпт подставится в строку редактора, нажмите **"Отправить"**.
 
-   <img src="images_user_guide/send-prompt.png" >
-
+    ![](https://raw.githubusercontent.com/mts-ai/cotype/main/images_user_guide/send-prompt.png)
+   
    Для вызова команд для работы с чатом, введите символ **":"** и выберите нужную команду из списка. 
 
-    <img src="images_user_guide/chat-choose-command.png" >
-
-
+    ![](https://raw.githubusercontent.com/mts-ai/cotype/main/images_user_guide/chat-choose-command.png)
+    
     Для удаление чата, вы также можете использовать кнопку **"Очистить чат"** на панели чата.
 
     Если вам нужно изменить сообщение, нажмите кнопку  **"Редактировать"**. После внесения изменений в сообщения, нажмите **"Подтвердить"**.
 
-    <img src="images_user_guide/change-message.png" >
+    ![](https://raw.githubusercontent.com/mts-ai/cotype/main/images_user_guide/change-message.png)
+    
 
 ## 4.4 Изменение настроек чата
 
 Вы можете изменить настройки конкретного чата. <br>
 Для открытия настроек выбранного чата, нажмите кнопку **"Настройки чата"** в панели над окном ввода.
 
-  <img src="images_user_guide/chat-settings-button.png" >
-
+   ![](https://raw.githubusercontent.com/mts-ai/cotype/main/images_user_guide/chat-settings-button.png)
+  
 В окне "Текущие настройки чата" вы можете:
 - изменить промпт;
 - аватар роли;
@@ -744,7 +745,8 @@ https://IP_Address/v1/embeddings
 - изменить основные настройки модели. Например, случайность (`temperature`), ядро выборки (`top_p`), ограничение на количество токенов (`max_tokens`), наказание за новизну тем (`presense_penalty`) и другие.   
 - сохранить текущий чат как маску. 
 
-  <img src="images_user_guide/current-chat-settings.png" >
+  ![](https://raw.githubusercontent.com/mts-ai/cotype/main/images_user_guide/current-chat-settings.png)
+  
 
 **Таблица 8**. Основные настройки чата
 
@@ -765,8 +767,8 @@ https://IP_Address/v1/embeddings
 
 1. Нажмите кнопку в левом нижнем углу экрана.
 
-   <img src="images_user_guide/change-common-settings-button.png" width=150 height=300>
-
+   ![](https://raw.githubusercontent.com/mts-ai/cotype/main/images_user_guide/change-common-settings-button.png)
+   
 2. Измените необходимые настройки из окна "Все параметры настроек". Например: 
 - аватар;
 - сочетание клавиш для отправки промпта; 
@@ -775,13 +777,15 @@ https://IP_Address/v1/embeddings
 - размер шрифта и шрифт чата;
 - настройки модели.
 
-  <img src="images_user_guide/common-settings.png" >
+  ![](https://raw.githubusercontent.com/mts-ai/cotype/main/images_user_guide/common-settings.png)
+  
 
 ## 4.6 Удаление чата
 
 Для удаления чата найдите его в списке чатов и нажмите кнопку в правом верхнем углу соответствующего чата.
 
-<img src="images_user_guide/delete-chat-button.png" width=289 height=282>
+![](https://raw.githubusercontent.com/mts-ai/cotype/main/images_user_guide/delete-chat-button.png)
+  
 
 # Приложение 1. Описание возвращаемых ошибок при работе с методами API
 
