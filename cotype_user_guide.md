@@ -791,17 +791,16 @@ https://IP_Address/v1/embeddings
 
 # Все запросы
 
-```
-Code 401 - Пользователь указал некорректный токен.
-```
+401 — пользователь указал некорректный токен. Code 401: "UnauthorizedError: Wrong token"<br>
+403 — ошибка прав доступа. Для методов управления правом доступа пользователя. Например, когда пользователь пытается выполнить действие, доступное только администратору.<br>
+405 —  метод не поддерживается. Code 405: "Method Not Allowed".<br>
+422 —  ошибка, возникающая при некорректном по структуре запросе. Code 422: "Unprocessable Entity". Относится к методам с POST-запросом.<br>
+500 — непредвиденная ошибка. Code 500: "Internal Server Error".
 
-**Пример ответа 401**:
-
-```
-"UnauthorizedError: Wrong token"
-```
 
 # Запрос POST/v1/chat/completions
+
+503 — ошибка, возникающая в случае недоступности сервиса "Цензор". Code 503 — "The server was unable to complete your request. Please try again later".
 
 ## Атрибут: model, обязательный
 
@@ -845,7 +844,7 @@ Code 401 - Пользователь указал некорректный ток
 
    ```
    {
-      "object": "error", "message": "[{'type': 'missing','loc': ('body', 'messages'),'msg': 'Field required', 'input': {'model':'cotype_pro_2'}}]", 
+      "object": "error", "message": "[{'type': 'missing','loc': ('body', 'messages'),'msg': 'Field required', 'input': {'model':'cotype_pro_2.0'}}]", 
       "type": "BadRequestError",
       "param": null,
       "code": 400
@@ -1139,6 +1138,9 @@ Code 401 - Пользователь указал некорректный ток
 Ошибки, характерные только для данного запроса, отсутствуют.
 
 # Запрос POST/v1/completions 
+
+
+503 —  ошибка, возникающая в случае недоступности сервиса "Цензор". Code 503 — "The server was unable to complete your request. Please try again later".
 
 ## Атрибут: prompt, обязательный
 
